@@ -6,8 +6,10 @@ class Network:
         self.server ="192.168.1.192"
         self.port =8000
         self.addr =(self.server,self.port)
-        self.id =self.connect()
-        print(self.id)
+        self.pos =self.connect()
+        
+    def getPos(self):
+        return self.pos
     
     def connect(self):
         try:
@@ -16,7 +18,7 @@ class Network:
         except:
             pass
 
-    def send(self,data:str):
+    def send(self,data):
         try:
             self.client.send(str.encode(data))
             return self.client.recv(2048).decode()
